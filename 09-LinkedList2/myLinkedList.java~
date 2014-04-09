@@ -1,0 +1,86 @@
+public class myLinkedList{
+    public Node head;
+    
+    public void myLinkedList(){
+	head = null;
+	
+    }
+
+    public void add(String s){
+	Node temp = new Node(s);
+	temp.setNext(head);
+	head = temp;
+    }
+    
+    public void add(int i, String s){
+	Node newNode = new Node(s);
+	
+	Node tmp = head;
+	while(0 <= i-1){
+	    tmp = tmp.getNext();
+	    i--;
+	}
+	newNode.setNext(tmp.getNext());
+	tmp.setNext(newNode);
+	
+    }
+    
+    public String get(int i){
+	Node temp = head;
+	for (int j = 0;j < i;j++){
+	    temp = temp.getNext();
+	}
+	return temp.getData();
+    }
+    
+    public String set(int i, String s){
+	Node temp = head;
+	for (int j = 0;j < i;j++){
+	    temp = temp.getNext();
+	}
+	String old = temp.getData();
+	temp.setData(s);
+	return old;
+    }
+    
+    public String remove(int i){
+	Node temp = head;
+	for (int j = 0;j < i - 1;j++){
+	    temp = temp.getNext();
+	}
+	String old = temp.getNext().getData();
+	temp.setNext(temp.getNext().getNext());
+	return old;
+	
+    }
+    
+    public int find(String s){
+	Node temp = head;
+	int counter = 1;
+	while(temp.getData() != s){
+	    if (temp.getNext() == null)
+		return -1;
+	    counter++;
+	    temp = temp.getNext();
+	}
+	return counter;
+    }
+
+    public int length(){
+	Node temp = head;
+	int counter = 1;
+	while(!(temp.getNext() == null)){
+	    counter++;
+	    temp = temp.getNext();
+	}
+	return counter;
+    }
+    
+    public String toString(){
+	String s = "";
+	s = s + head;
+	return s;
+    }
+    
+    
+}
